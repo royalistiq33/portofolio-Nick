@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rekenmachine</title>
+  </head>
+  <body>
+    <h1>Rekenmachine</h1>
+    <script>
+      // Vraag de gebruiker om twee getallen
+      var getal1 = prompt("Voer het eerste getal in:");
+      var getal2 = prompt("Voer het tweede getal in:");
+
+      // Converteer de getallen naar een numerieke waarde
+      getal1 = parseFloat(getal1);
+      getal2 = parseFloat(getal2);
+
+      // Berekeningen uitvoeren
+      var optelling = getal1 + getal2;
+      var aftrekking = getal1 - getal2;
+      var vermenigvuldiging = getal1 * getal2;
+      var deling = getal1 / getal2;
+
+      // Resultaten weergeven aan de gebruiker
+      document.write("Optelling: " + optelling + "<br>");
+      document.write("Aftrekking: " + aftrekking + "<br>");
+      document.write("Vermenigvuldiging: " + vermenigvuldiging + "<br>");
+      document.write("Deling: " + deling);
+    </script>
+  </body>
+</html>

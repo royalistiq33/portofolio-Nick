@@ -1,0 +1,21 @@
+<htmL> // JavaScript-bestand: script.js
+<head> </head>
+<bodY> 
+// Definieer het persoon-object met de gewenste eigenschappen
+var persoon = {
+    naam: "John Doe",
+    leeftijd: 25,
+    hobby: ["lezen", "sporten", "koken"]
+  };
+  
+  // Functie om de eigenschappen van het persoon-object op de console weer te geven
+  function toonPersoon(persoon) {
+    console.log("Naam:", persoon.naam);
+    console.log("Leeftijd:", persoon.leeftijd);
+    console.log("Hobby's:", persoon.hobby.join(", "));
+  }
+  
+  // Roep de functie aan om het persoon-object weer te geven
+  toonPersoon(persoon);
+</bodY>
+</htmL>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+</head>
+<body>
+  <h1>Quiz</h1>
+
+  <div id="vraagContainer">
+    <h3 id="vraagTekst"></h3>
+    <ul id="antwoordLijst"></ul>
+    <button onclick="volgendeVraag()">Volgende vraag</button>
+  </div>
+
+  <div id="scoreContainer">
+    <h3>Score</h3>
+    <p id="score"></p>
+  </div>
+
+  <script>
+    // JavaScript-code
+    var vragen = [
+    {
+  
+        vraag: "welk land valt r''sland binnen",
+        antwoorden: ["china", "oekraine", "tido rutte ", "friesland"],
+        juisteAntwoord: "oekraine"
+      },
+      {
+        vraag: "wie is president van amerika",
+        antwoorden: [" Afrika", "biden", "abomo", "trump"],
+        juisteAntwoord: "biden"
+      },
+      {
+        vraag: "wie is corrupt",
+        antwoorden: ["kaag", "mark rutte", "tido rutte", "milan korteweg"],
+        juisteAntwoord: "mark rutte"
+      },
+      {
+        vraag: "wie maakt de lekkerste paninis",
+        antwoorden: ["robin schaaf", "geert wilders", "claudia", "tido rutte"],
+        juisteAntwoord: "claudia"
+      },
+    {
+        vraag: "waar werkt robin schaaf",
+        antwoorden: ["brabant", "dok16", "mcdonalds", "tido rutte"],
+        juisteAntwoord: "dok16"
+      },
+      {
+        vraag: "wie ging er dood in achste groepers huilen niet",
+        antwoorden: ["die docent kerel", "ben van beelen", "akkie", "Katwijk"],
+        juisteAntwoord: "akkie"
+      },
+      {
+        vraag: "wie is hitler ",
+        antwoorden: ["Vthorben", "een duitse dictator", "LinkTijger", "Royalistiq"],
+        juisteAntwoord: "een duitse dictator"
+      },
+      {
+        vraag: "wie zijn de besten",
+        antwoorden: ["Sv Urk", "AFC Ajax ", "VV katwijk", "VV Jonathan"],
+        juisteAntwoord: "Sv Urk"
+      },
+      {
+        vraag: "hoe oud is lebron james (glorious king)",
+        antwoorden: ["100", "38 ", "80", "90"],
+        juisteAntwoord: "38"
+      },
+
+    ];
+
+    var huidigeVraagIndex = 0;
+    var score = 0;
+
+    var vraagTekstElement = document.getElementById("vraagTekst");
+    var antwoordLijstElement = document.getElementById("antwoordLijst");
+    var scoreElement = document.getElementById("score");
+
+    function weergeefVragen() {
+      var huidigeVraag = vragen[huidigeVraagIndex];
+      vraagTekstElement.textContent = huidigeVraag.vraag;
+
+      while (antwoordLijstElement.firstChild) {
+        antwoordLijstElement.removeChild(antwoordLijstElement.firstChild);
+      }
+
+      for (var i = 0; i < huidigeVraag.antwoorden.length; i++) {
+        var antwoord = huidigeVraag.antwoorden[i];
+        var antwoordItem = document.createElement("li");
+        antwoordItem.textContent = antwoord;
+        antwoordItem.onclick = controleerAntwoord;
+        antwoordLijstElement.appendChild(antwoordItem);
+      }
+    }
+
+    function controleerAntwoord(event) {
+      var gekozenAntwoord = event.target.textContent;
+      var huidigeVraag = vragen[huidigeVraagIndex];
+
+      if (gekozenAntwoord === huidigeVraag.juisteAntwoord) {
+        score++;
+        event.target.style.backgroundColor = "green";
+      } else {
+        event.target.style.backgroundColor = "red";
+      }
+
+      antwoordLijstElement.style.pointerEvents = "none"; // Schakel klikken op antwoorden uit
+      volgendeVraag();
+    }
+
+    function volgendeVraag() {
+      if (huidigeVraagIndex < vragen.length - 1) {
+        huidigeVraagIndex++;
+        weergeefVragen();
+        antwoordLijstElement.style.pointerEvents = "auto"; // Schakel klikken op antwoorden in
+      } else {
+        toonEindResultaat();
+      }
+    }
+
+    function toonEindResultaat() {
+      vraagTekstElement.textContent = "einde quiz";
+      antwoordLijstElement.style.display = "none";
+      document.getElementById("scoreContainer").style.display = "block";
+      scoreElement.textContent = "Je score: " + score + "/" + vragen.length;
+    }
+
+    weergeefVragen();
+   
+ 
+ 
+ </script>
+
+
+
+</body>
+
+
+
+
+</html>
